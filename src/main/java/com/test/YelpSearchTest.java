@@ -1,10 +1,10 @@
 package com.test;
 
-import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class YelpSearchTest {
@@ -21,17 +21,18 @@ public class YelpSearchTest {
 	        driver.get("https://www.yelp.com/");
 
 	        // Enter "Restaurant" in the search box
-	        WebElement searchBox = driver.findElement(By.id("find_desc"));
+	        WebElement searchBox = driver.findElement(By.id("search_description"));
 	        searchBox.sendKeys("Restaurant");
 
 	        // Click on the search button
-	        WebElement searchButton = driver.findElement(By.id("header-search-submit"));
+	        WebElement searchButton = driver.findElement(By.xpath("//*[@id='header_find_form']/div[3]/button"));
 	        searchButton.click();
 
 	        // Verify the title of the result page
-	        String expectedTitle = "Search Results";
+	        String expectedTitle = "TOP 10 BEST Restaurant in San Francisco, CA - January 2024 - Yelp";
 	        String actualTitle = driver.getTitle();
 
+			System.out.println(actualTitle);
 	        Assert.assertEquals(expectedTitle, actualTitle);
 
 	        // Close the browser
