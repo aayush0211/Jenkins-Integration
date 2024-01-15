@@ -61,6 +61,10 @@
 				<artifactId>maven-surefire-plugin</artifactId>
 				<version>3.0.0-M5</version>
 				<configuration>
+					<suiteXmlFiles>
+						<!-- pass testng.xml files as argument from command line -->
+						<suiteXmlFile>${suiteXmlFile}</suiteXmlFile>
+					</suiteXmlFiles>
 					<includes>
 						<include>**/*Test.java</include>
 					</includes>
